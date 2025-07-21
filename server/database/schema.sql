@@ -58,7 +58,7 @@ id INT PRIMARY KEY AUTO_INCREMENT,
 users_id INT NOT NULL,
 anime_id INT NOT NULL, 
 note INT CHECK (note BETWEEN 0 AND 5),
-FOREIGN KEY (users_id) REFERENCES Users(id) ON DELETE CASCADE,
+FOREIGN KEY (users_id) REFERENCES users(id) ON DELETE CASCADE,
 FOREIGN KEY (anime_id) REFERENCES Anime(id) ON DELETE CASCADE
 );
 
@@ -95,7 +95,7 @@ CREATE TABLE users_anime (
   anime_id INT NOT NULL,
   users_id INT NOT NULL,
   UNIQUE (users_id, anime_id),
-  FOREIGN KEY (users_id) REFERENCES Users(id) ON DELETE CASCADE,
+  FOREIGN KEY (users_id) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (anime_id) REFERENCES Anime(id) ON DELETE CASCADE
 );
 
@@ -104,7 +104,7 @@ CREATE TABLE favorite_anime(
   id INT PRIMARY KEY AUTO_INCREMENT,
   anime_id INT NOT NULL,
   users_id INT NOT NULL,
-  FOREIGN KEY (users_id) REFERENCES Users(id) ON DELETE CASCADE,
+  FOREIGN KEY (users_id) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (anime_id) REFERENCES Anime(id) ON DELETE CASCADE
 );
 
