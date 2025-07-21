@@ -64,7 +64,7 @@ class AnimeRepository {
 
   async readAll() {
     // Exécute la requête SQL pour lire tout le tableau de la table "Anime"
-    const [rows] = await databaseClient.query<Rows>("select * from Anime");
+    const [rows] = await databaseClient.query<Rows>("select * from anime");
 
     // Return the array of items
     return rows as Anime[];
