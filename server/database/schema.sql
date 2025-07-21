@@ -25,7 +25,7 @@ CREATE TABLE ProfilPicture (
 );
 
 -- Table Users (user est réservé, donc on peut nommer users)
-CREATE TABLE Users (
+CREATE TABLE users (
   id INT PRIMARY KEY AUTO_INCREMENT,
   firstname VARCHAR(150) NOT NULL,
   lastname VARCHAR(150) NOT NULL,
