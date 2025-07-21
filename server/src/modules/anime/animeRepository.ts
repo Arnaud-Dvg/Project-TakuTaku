@@ -21,7 +21,7 @@ class AnimeRepository {
   async create(anime: Omit<Anime, "id">) {
     // Création d'un nouvel animé
     const [result] = await databaseClient.query<Result>(
-      "INSERT INTO Anime (title, synopsis, portrait, date, genre_id, paysage, video) values (?, ?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO anime (title, synopsis, portrait, date, genre_id, paysage, video) values (?, ?, ?, ?, ?, ?, ?, ?)",
       [
         anime.title,
         anime.synopsis,
@@ -40,7 +40,7 @@ class AnimeRepository {
   async read(id: number) {
     // Récupère l'animé
     const [animeRows] = await databaseClient.query<Rows>(
-      "SELECT * FROM Anime WHERE id = ?",
+      "SELECT * FROM anime WHERE id = ?",
       [id],
     );
     // Vérifie si l'animé existe
@@ -93,9 +93,9 @@ class AnimeRepository {
     SELECT 
       a.id, a.title, a.synopsis, a.genre_id, a.portrait, 
       GROUP_CONCAT(t.id) as tid 
-    FROM Anime a 
-    INNER JOIN Anime_type at ON a.id = at.anime_id 
-    INNER JOIN Type t ON at.type_id = t.id 
+    FROM anime a 
+    INNER JOIN anime_type at ON a.id = at.anime_id 
+    INNER JOIN type t ON at.type_id = t.id 
     ${whereSQL}
     GROUP BY a.id, a.title, a.synopsis, a.genre_id, a.portrait
   `;
@@ -109,7 +109,7 @@ class AnimeRepository {
   async update(anime: Anime) {
     // Exécute la requête SQL pour lire tout le tableau de la table "Anime"
     const [result] = await databaseClient.query<Result>(
-      "UPDATE Anime set title = ?, synopsis = ?, portrait = ?, date = ?, genre_id = ?, paysage = ?, video = ? WHERE id = ?",
+      "UPDATE anime set title = ?, synopsis = ?, portrait = ?, date = ?, genre_id = ?, paysage = ?, video = ? WHERE id = ?",
       [
         anime.title,
         anime.synopsis,
@@ -130,7 +130,7 @@ class AnimeRepository {
   async delete(id: number) {
     // Exécute la requête SQL pour supprimer un anime spécifique par son ID
     const [result] = await databaseClient.query<Result>(
-      "DELETE FROM Anime WHERE id = ?",
+      "DELETE FROM anime WHERE id = ?",
       [id],
     );
     // Retourne le nombre de lignes affectées par la suppression
@@ -142,13 +142,13 @@ class AnimeRepository {
     const [rows] = await databaseClient.query(
       `SELECT a.id, a.title, a.synopsis, a.portrait, a.date, a.paysage, a.video, g.name AS genre_name
       FROM Anime As a
-      LEFT JOIN Genre AS g ON a.genre_id = g.id`,
+      LEFT JOIN genre AS g ON a.genre_id = g.id`,
     );
     return rows;
   }
   async readAllWithNote() {
     const [rows] = await databaseClient.query(
-      "SELECT a.id, a.title, ROUND(AVG(n.note), 1) AS note FROM Anime AS a LEFT JOIN Note AS n ON n.anime_id = a.id GROUP BY a.id, a.title ORDER BY note DESC",
+      "SELECT a.id, a.title, ROUND(AVG(n.note), 1) AS note FROM anime AS a LEFT JOIN Note AS n ON n.anime_id = a.id GROUP BY a.id, a.title ORDER BY note DESC",
     );
     return rows;
   }
