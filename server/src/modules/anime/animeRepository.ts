@@ -148,7 +148,7 @@ class AnimeRepository {
   }
   async readAllWithNote() {
     const [rows] = await databaseClient.query(
-      "SELECT a.id, a.title, ROUND(AVG(n.note), 1) AS note FROM anime AS a LEFT JOIN Note AS n ON n.anime_id = a.id GROUP BY a.id, a.title ORDER BY note DESC",
+      "SELECT a.id, a.title, ROUND(AVG(n.note), 1) AS note FROM anime AS a LEFT JOIN note AS n ON n.anime_id = a.id GROUP BY a.id, a.title ORDER BY note DESC",
     );
     return rows;
   }
