@@ -19,7 +19,7 @@ CREATE TABLE type (
 );
 
 -- Table ProfilPicture
-CREATE TABLE profilPicture (
+CREATE TABLE profilpicture (
   id INT PRIMARY KEY AUTO_INCREMENT,
   profil_picture TEXT
 );
