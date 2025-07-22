@@ -141,7 +141,7 @@ class AnimeRepository {
   async readAllWithGenre() {
     const [rows] = await databaseClient.query(
       `SELECT a.id, a.title, a.synopsis, a.portrait, a.date, a.paysage, a.video, g.name AS genre_name
-      FROM Anime As a
+      FROM anime As a
       LEFT JOIN genre AS g ON a.genre_id = g.id`,
     );
     return rows;

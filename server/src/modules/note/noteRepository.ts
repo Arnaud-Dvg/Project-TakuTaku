@@ -57,7 +57,7 @@ class noteRepository {
   async readUserNote(anime_id: number, users_id: number) {
     // Récupère la note
     const [noteRows] = await databaseClient.query<Rows>(
-      "SELECT note FROM Note WHERE anime_id = ? AND users_id = ?",
+      "SELECT note FROM note WHERE anime_id = ? AND users_id = ?",
       [anime_id, users_id],
     );
     // Retourne la note moyenne
