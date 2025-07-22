@@ -36,7 +36,7 @@ CREATE TABLE users (
   abonnement_id INT NOT NULL,
   profil_picture_id INT DEFAULT 1,
   FOREIGN KEY (abonnement_id) REFERENCES abonnement(id),
-  FOREIGN KEY (profil_picture_id) REFERENCES profilPicture(id)
+  FOREIGN KEY (profil_picture_id) REFERENCES profilpicture(id)
 );
 
 -- Table Anime
@@ -133,7 +133,7 @@ INSERT INTO type (name) VALUES
 ('Thriller');
 
 -- Insertion des images de profil
-INSERT INTO profilPicture (profil_picture) VALUES
+INSERT INTO profilpicture (profil_picture) VALUES
 ('https://mbfertyaeqebaqqcrryu.supabase.co/storage/v1/object/sign/profilpicture/connectedavatar.svg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZGE3ZDRmMy0xYWU0LTQ2ZTktOWIzZi01MmM3MjE5Mzg1MWMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9maWxwaWN0dXJlL2Nvbm5lY3RlZGF2YXRhci5zdmciLCJpYXQiOjE3NTIxMzIzNTgsImV4cCI6NDkwNTczMjM1OH0.0ABjsw40Fl9Mrkn1offOA4SjHz9QtkDw3DIa2rokUYs'),
 ('https://mbfertyaeqebaqqcrryu.supabase.co/storage/v1/object/sign/profilpicture/profilpicture.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZGE3ZDRmMy0xYWU0LTQ2ZTktOWIzZi01MmM3MjE5Mzg1MWMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9maWxwaWN0dXJlL3Byb2ZpbHBpY3R1cmUucG5nIiwiaWF0IjoxNzUyMTMyMzc5LCJleHAiOjQ5MDU3MzIzNzl9.4T5W9N7-NB7OCMa_zObmDUiMNSwgq5nB-z8Rg7uQAxc'),
 ('https://mbfertyaeqebaqqcrryu.supabase.co/storage/v1/object/sign/profilpicture/profilpicture2.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9lZGE3ZDRmMy0xYWU0LTQ2ZTktOWIzZi01MmM3MjE5Mzg1MWMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwcm9maWxwaWN0dXJlL3Byb2ZpbHBpY3R1cmUyLnBuZyIsImlhdCI6MTc1MjEzMjM5MCwiZXhwIjo0OTA1NzMyMzkwfQ.BAYzBJZgohLyinJ89Nt_8TG2jqMNWYCXqQ-dN8b3c1Q'),
